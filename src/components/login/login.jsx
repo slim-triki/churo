@@ -16,7 +16,7 @@ export default Login;
 
 
 
-/*const [userData,setUserData]=usestate ({ username:"",password:""});
+const [userData,setUserData]=usestate ({ username:"",password:""});
 const handleInputChange = (e) =>{ 
     setUserData((prevState) => {
         return {
@@ -35,7 +35,7 @@ const handleSubmit = (e) => {
         //Signin Success
         localStorage.setItem("isAuthenticated", "true");
         window.location.pathname = "/home";
-};*/
+};
 
 function Login() {
     
@@ -48,12 +48,12 @@ function Login() {
     </section>
     <section className="formulaire">
         <label >User</label>
-        <input type="text"  id="username" name="user"   />
+        <input type="text"  id="username" name="user" onChange={(e) => handleInputChange(e)}  />
         <label >password</label>
-        <input type="password"  id="password " name="pass" />
+        <input type="password"  id="password " name="pass" onChange={(e) => handleInputChange(e)}/>
 
     </section>
-        <button  >Login</button>
+        <button type="submit" onClick={handleSubmit} >Login</button>
     </section>
 
 

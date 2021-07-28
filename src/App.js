@@ -84,7 +84,7 @@ function Auth(){
       if (username === objpeople[i].username && password === objpeople[i].password )
           {
               
-             console.log(username + password +" is logged !");
+             console.log(username + password +" is logged !"); 
              return
           }}
       
