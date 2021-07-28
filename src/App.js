@@ -44,13 +44,13 @@ function App() {
 
       <section className="formulaire">
         <label >User</label>
-        <input type="text"  id="username" name="username"   />
+        <input type="text"  id="user"    />
         <label >password</label>
-        <input type="password"  id="password " name="password"   />
+        <input type="password"  id="pass"    />
 
       </section>
-        <button onClick={() =>{setIsAuth(false);}} >Login</button>
-        <Link to="/page">go</Link>
+        <button type="submit" onClick={Auth} >Login</button>
+        <Link to="/page" onClick={() =>{setIsAuth(true);}}>go</Link>
       </section>
      </div>
      
@@ -60,5 +60,37 @@ function App() {
      </Router>
   );
 }
+
+
+var objpeople =[
+  {
+      username:"slim",
+      password:"slim"
+  },
+  {
+      username:"k",
+      password:"k"
+  }
+  ]
+function Auth(){
+            
+  
+  var i;
+  var username = document.getElementById("user").value;
+  var password = document.getElementById("pass").value;
+
+  for (i=0; i<objpeople.length;i++){
+
+      if (username === objpeople[i].username && password === objpeople[i].password )
+          {
+              
+             console.log(username + password +" is logged !");
+             return
+          }}
+      
+          console.log (username + password  +"incorrect username or password")
+}
+        
+
 
 export default App;

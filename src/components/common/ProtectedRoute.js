@@ -2,6 +2,7 @@ import React from 'react'
 import { Redirect,Route } from 'react-router-dom'
 
  function ProtectedRoute ({ isAuth : Isauth, component: Component, ...Rest  } ) {
+    
     return (
         <Route {...Rest} render={(props)=>{
             if (Isauth ){
@@ -18,4 +19,6 @@ import { Redirect,Route } from 'react-router-dom'
         
     )
 }
+
+
 export default ProtectedRoute;

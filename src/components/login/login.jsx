@@ -16,7 +16,7 @@ export default Login;
 
 
 
-const [userData,setUserData]=usestate ({ username:"",password:""});
+/*const [userData,setUserData]=usestate ({ username:"",password:""});
 const handleInputChange = (e) =>{ 
     setUserData((prevState) => {
         return {
@@ -35,7 +35,7 @@ const handleSubmit = (e) => {
         //Signin Success
         localStorage.setItem("isAuthenticated", "true");
         window.location.pathname = "/home";
-};
+};*/
 
 function Login() {
     
@@ -48,12 +48,12 @@ function Login() {
     </section>
     <section className="formulaire">
         <label >User</label>
-        <input type="text"  id="username" name="user" onChange={(e) => handleInputChange(e)}  />
+        <input type="text"  id="username" name="user"   />
         <label >password</label>
-        <input type="password"  id="password " name="pass" onChange={(e) => handleInputChange(e)}/>
+        <input type="password"  id="password " name="pass" />
 
     </section>
-        <button type="submit" onClick={handleSubmit} >Login</button>
+        <button  >Login</button>
     </section>
 
 
@@ -99,7 +99,7 @@ function Login() {
             var password = document.getElementById("pass").value;
             for (i=0; i<objpeople.length;i++){
                 if(
-                    username === objpeople[i].username && password === objpeople[i].password)
+                    uasername === objpeople[i].usernme && password === objpeople[i].password)
                     {return (
                         <Redirect to ='/Home' />)
                        
