@@ -1,8 +1,8 @@
 import React from 'react';
-/*import { useState } from 'react';*/
-import { BrowserRouter as Router, Route ,Redirect} from 'react-router-dom';
+import { useState } from 'react';
+import { BrowserRouter as Router, Route ,Redirect,useHistory,Switch} from 'react-router-dom';
 import './App.css';
-/*import ProtectedRoute from './components/common/ProtectedRoute';*/
+import ProtectedRoute from './components/common/ProtectedRoute';
 import Page from './components/pages/page';
 
 /*var objpeople =[
@@ -30,9 +30,21 @@ const handleSubmit = (e) => {
 };*/
 
 function App() {
-  /*const [isAuth, setIsAuth] = useState(false);*/
+  const [isAuth, setIsAuth] = useState(true);
+  
+  const history = useHistory();
+  const HandleHistory =() =>{
+    let churo = Auth();
+    if(churo===true){
+   history.push("/page");}
+   else {console.log("why")}
+
+  
+  }
+  
   return (
-    <Router>
+    
+      <Switch>
       <Route path="/" exact>
     <div className="App">
 
@@ -44,22 +56,32 @@ function App() {
 
       <section className="formulaire">
         <label >User</label>
-        <input type="text"  id="user"    />
+        <input type="text"  id="username"    />
         <label >password</label>
-        <input type="password"  id="pass"    />
+        <input type="password"  id="password"    />
 
       </section>
-        <button type="submit" onClick={ProtectedRoute} >Login</button>
-      
+        <button type="submit" onClick={HandleHistory}  >Login</button>
+        
       </section>
+      
      </div>
      
      </Route>
+     <Route path="/about" />
+     <ProtectedRoute path="/Page" component={Page} isAuth={isAuth}  />
+     </Switch>
      
-     <ProtectedRoute path="/Page" component={Page}   />
-     </Router>
   );
 }
+
+
+
+
+  
+ 
+
+
 
 
 var objpeople =[
@@ -73,16 +95,65 @@ var objpeople =[
   }
   ]
 
+ function Auth(msg ){
+       
+  
+
+var i;
+var username = document.getElementById("username").value;
+var password = document.getElementById("password").value;
+
+for (i=0; i<objpeople.length;i++){
+
+   if (username === objpeople[i].username && password === objpeople[i].password )
+       {msg = true;
+        console.log(msg);
+        return (msg)
+       }else{ msg= false;
+         console.log(msg);
+       }
+      } 
+    }
+      
         
+      
+        
+      
+   
+       /*console.log (username + password  +"incorrect username or password")*/
+ 
 
 
-export default App;
-function ProtectedRoute ({  component: Component, ...Rest  } ) {
- /* var i;*/
-  var username = document.getElementById("user").value;
-  var password = document.getElementById("pass").value;
+  /*function ProtectedRoute ({  component: Component, ...Rest  } ) {
+ 
+    var username = document.getElementById("username").value;
+    var password = document.getElementById("password").value;
+    
+    return (
+      
+        <Route {...Rest} render={(props)=>{
+          for (let i=0; i<objpeople.length;i++){
+            if (username === objpeople[i].username && password === objpeople[i].password ){
+                return <Component/>
+            } else {
+                return (
+                    <Redirect to={{pathname: "/", state: {from: props.location}}}/>
+                );
+            }
+        }
+  
+        }}/>
+            
+        
+    )
+  }*/
+/*function ProtectedRoute ({  component: Component, ...Rest  } ) {
+ 
+  var username = document.getElementById("username").value;
+  var password = document.getElementById("password").value;
   for (let i=0; i<objpeople.length;i++){
   return (
+    
       <Route {...Rest} render={(props)=>{
           if (username === objpeople[i].username && password === objpeople[i].password ){
               return <Component/>
@@ -97,9 +168,9 @@ function ProtectedRoute ({  component: Component, ...Rest  } ) {
           
       
   )
-}}
+}}*/
 
-
+export default App;
 /*function Auth(){
        
 
