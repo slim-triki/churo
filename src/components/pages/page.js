@@ -8,7 +8,7 @@ import { withRouter,useHistory } from 'react-router-dom'
             
             <button onClick={()=>{
             history.push("/about")
-            }}> churo</button>
+            }}> churoo</button>
             
         </div>
     )
