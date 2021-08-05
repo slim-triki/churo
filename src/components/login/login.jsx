@@ -1,110 +1,97 @@
 import React from 'react';
+import { useState } from 'react';
+import { BrowserRouter as Router, Route ,useHistory,Switch,Link} from 'react-router-dom';
 import './login.css';
-import { Redirect, BrowserRouter as Router, Route   } from 'react-router-dom';
+import ProtectedRoute from '../common/ProtectedRoute'
+import Page from '../pages/page';
 export default Login;
 
-/*var objpeople =[
-    {
-        username:"slim",
-        password:"slim"
-    },
-    {
-        username:"k",
-        password:"k"
-    }
-    ]*/
 
-
-
-const [userData,setUserData]=usestate ({ username:"",password:""});
-const handleInputChange = (e) =>{ 
-    setUserData((prevState) => {
-        return {
-          ...prevState,
-          [e.target.name]: e.target.value,
-        };
-      });
-
-};
-const handleSubmit = (e) => { 
-    e.preventDefault();
-    if (
-        userData.username() === objpeople.username &&
-        userData.password === objpeople.password
-      ) {
-        //Signin Success
-        localStorage.setItem("isAuthenticated", "true");
-        window.location.pathname = "/home";
-};
 
 function Login() {
-    
-    return(
-<section className="login-form">
-    
+  const [isAuth, setIsAuth] = useState(true);
+  
+  const history = useHistory();
+  const HandleHistory =() =>{
+    let churo = Auth();
+    if(churo===true){
+   history.push("/page");
+   
+  }
+   else {console.log("why")}
+  }
+  
+  return (
+    <Router>
+      <Switch>
+      <Route path="/login" >
+    <div className="App">
 
-    <section className="logo">
+      
+      <section className="login-form">
+        <section className="logo"> 
         <img src="logo.jpg" alt="logo" className="photo"/>
-    </section>
-    <section className="formulaire">
+      </section>
+
+      <section className="formulaire">
         <label >User</label>
-        <input type="text"  id="username" name="user" onChange={(e) => handleInputChange(e)}  />
+        <input type="text"  id="username"    />
         <label >password</label>
-        <input type="password"  id="password " name="pass" onChange={(e) => handleInputChange(e)}/>
+        <input type="password"  id="password"    />
 
-    </section>
-        <button type="submit" onClick={handleSubmit} >Login</button>
-    </section>
-
-
-
-    )
-} 
-
-
-
+      </section>
+        <button type="submit" onClick={HandleHistory}>Login</button>
+        <Link to="/page" onClick={HandleHistory}>log</Link>
+      </section>
+      
+     </div>
+     
+     </Route>
+     <Route path="/about" />
+     <ProtectedRoute path="/page" component={Page} isAuth={isAuth}  />
+     </Switch>
+     </Router>
+  );
 }
 
 
-/*const fakeAuth ={
-    isAuthenticated : false,
-    authenticate(cb){
-        this.isAuthenticated=true
-        setTimeout(cb, 100)
-    },
-    signout (cb){
-        this.isAuthenticated=false
-        setTimeout(cb,100)
+
+
+  
+ 
+
+
+
+
+var objpeople =[
+  {
+      username:"slim",
+      password:"slim"
+  },
+  {
+      username:"k",
+      password:"k"
+  }
+  ]
+
+ function Auth(msg ){
+       
+  
+
+var i;
+var username = document.getElementById("username").value;
+var password = document.getElementById("password").value;
+
+for (i=0; i<objpeople.length;i++){
+
+   if (username === objpeople[i].username && password === objpeople[i].password )
+       {msg = true;
+        console.log(msg);
+        return (msg)
+       }else{ msg= false;
+         
+       }
+      } 
     }
-}*/
-
-/*function PrivateRoute({ children, ...rest }){
-    return (
-        <Route {...rest} render={() => {
-            return fakeAuth.isAuthenticated === true
-            ? children
-            : <Redirect to='/Login' />
-        }} >
-        </Route>
-            
-    )
-}*/
-
-
-    /*function Auth(){
-            
-
-            var i;
-            var username = document.getElementById("user").value;
-            var password = document.getElementById("pass").value;
-            for (i=0; i<objpeople.length;i++){
-                if(
-                    uasername === objpeople[i].usernme && password === objpeople[i].password)
-                    {return (
-                        <Redirect to ='/Home' />)
-                       
-                        /*console.log(username  +" is logged !");
-                    }
-                }
-                    console.log(username + password +"incorrect username or password")
-        }*/
+      
+    
