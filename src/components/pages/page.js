@@ -1,11 +1,17 @@
 import React from 'react'
-import { withRouter,useHistory } from 'react-router-dom'
+import { withRouter,useHistory,BrowserRouter as Router,Route,Switch } from 'react-router-dom'
 import {Header,Footer} from '../common/index'
+import Home from './Spage/home';
+
  function Page() {
      let history= useHistory();
     return (
+        
+            <Router >
+                
         <div>
             <Header/>
+            
             
             U are logged in 
             
@@ -36,6 +42,8 @@ import {Header,Footer} from '../common/index'
             <br/>
             <Footer/>
         </div>
+        
+        </Router>
     )
 }
 

@@ -17,6 +17,7 @@ function Login() {
   const HandleHistory =() =>{
     let churo = Auth();
     if(churo===true){
+        
    history.push("/page");
    setIsAuth (true);
    console.log(isAuth);
@@ -27,7 +28,8 @@ function Login() {
   }
   
   return (
-    
+    <Router forceRefresh>
+      
     <div className="App">
 
       
@@ -37,7 +39,7 @@ function Login() {
       </section>
 
       <section className="formulaire">
-        
+        <p>Click confirm then Login </p>
         <input type="text"  placeholder="User" id="username"    />
         <br/>
         <input type="password" placeholder="Password" id="password"    />
@@ -49,8 +51,11 @@ function Login() {
       
      </div>
      
+    
      
+     <ProtectedRoute path="/page" component={Page} isAuth={isAuth}  />
      
+     </Router>
   );
 }
 
