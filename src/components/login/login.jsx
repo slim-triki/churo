@@ -1,6 +1,6 @@
 import React from 'react';
-import { useState } from 'react';
-import { BrowserRouter as Router, Route ,useHistory,Switch,Link} from 'react-router-dom';
+import { useState , useEffect} from 'react';
+import { BrowserRouter as Router, Route ,useHistory,Switch} from 'react-router-dom';
 import './login.css';
 import ProtectedRoute from '../common/ProtectedRoute'
 import Page from '../pages/page';
@@ -9,22 +9,27 @@ export default Login;
 
 
 function Login() {
-  const [isAuth, setIsAuth] = useState(true);
+  const [isAuth, setIsAuth] = useState(false);
+  
+    
   
   const history = useHistory();
   const HandleHistory =() =>{
     let churo = Auth();
     if(churo===true){
    history.push("/page");
-   
+   setIsAuth (true);
+   console.log(isAuth);
   }
-   else {console.log("why")}
+   else {console.log("why");
+   console.log(isAuth);
+    }
   }
   
   return (
     <Router>
       <Switch>
-      <Route path="/login" >
+      <Route path="/" >
     <div className="App">
 
       
@@ -41,7 +46,7 @@ function Login() {
 
       </section>
         <button type="submit" onClick={HandleHistory}>Login</button>
-        <Link to="/page" onClick={HandleHistory}>log</Link>
+        
       </section>
       
      </div>
@@ -93,5 +98,5 @@ for (i=0; i<objpeople.length;i++){
        }
       } 
     }
-      
+    
     
