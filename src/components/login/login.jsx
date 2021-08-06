@@ -27,9 +27,7 @@ function Login() {
   }
   
   return (
-    <Router>
-      <Switch>
-      <Route path="/" >
+    
     <div className="App">
 
       
@@ -39,10 +37,10 @@ function Login() {
       </section>
 
       <section className="formulaire">
-        <label >User</label>
-        <input type="text"  id="username"    />
-        <label >password</label>
-        <input type="password"  id="password"    />
+        
+        <input type="text"  placeholder="User" id="username"    />
+        <br/>
+        <input type="password" placeholder="Password" id="password"    />
 
       </section>
         <button type="submit" onClick={HandleHistory}>Login</button>
@@ -51,11 +49,8 @@ function Login() {
       
      </div>
      
-     </Route>
-     <Route path="/about" />
-     <ProtectedRoute path="/page" component={Page} isAuth={isAuth}  />
-     </Switch>
-     </Router>
+     
+     
   );
 }
 
