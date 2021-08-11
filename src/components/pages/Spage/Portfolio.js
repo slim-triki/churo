@@ -1,11 +1,11 @@
 import React from 'react'
 import {Header,Footer} from '../../common/index'
-export default function Home() {
+export default function Portfolio() {
     return (
         <div>
             <Header/>
             <Footer/>
-            This is Home
+            porttt
         </div>
     )
 }

@@ -1,11 +1,12 @@
 import React from 'react'
 import {Header,Footer} from '../../common/index'
-export default function Home() {
+export default function Contact() {
     return (
         <div>
             <Header/>
+            contacteee
             <Footer/>
-            This is Home
+            
         </div>
     )
 }

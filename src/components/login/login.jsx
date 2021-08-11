@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Route ,useHistory,Switch} from 'react-router-d
 import './login.css';
 import ProtectedRoute from '../common/ProtectedRoute'
 import Page from '../pages/page';
+import { Button ,Input,Container} from '@material-ui/core';
+  
 export default Login;
 
 
@@ -40,12 +42,13 @@ function Login() {
 
       <section className="formulaire">
         <p>Click confirm then Login </p>
-        <input type="text"  placeholder="User" id="username"    />
+        <Input autoFocus="true" color="primary" type="text"  placeholder="User" id="username"    />
         <br/>
-        <input type="password" placeholder="Password" id="password"    />
+        <Input autoFocus="true" color="primary" type="password" placeholder="Password" id="password"    />
 
       </section>
-        <button type="submit" onClick={HandleHistory}>Login</button>
+      
+        <Button id="login" variant="outlined" color="primary" type="submit" onClick={HandleHistory}>Login</Button>
         
       </section>
       

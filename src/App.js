@@ -6,6 +6,7 @@ import { useState } from 'react';
 import Page from './components/pages/page';
 import './App.css';
 import Home from './components/pages/Spage/home';
+import {About,Blog,Contact,Portfolio,Shop} from './components/pages/Spage';
 export default function App() {
   const [isAuth, setIsAuth] = useState(true);
   
@@ -14,15 +15,15 @@ export default function App() {
   return (
     <div>
       
-    <Router>
+    <Router >
       <Switch>
       
     <Route path="/home" component={Home} />
-    <Route path="/about" >zzzzzzzz</Route>
-    <Route path="/portfolio" >dddddd</Route>
-    <Route path="/shop" >waaddddaaaa</Route>
-    <Route path="/blog" >zzzdddd</Route>
-    <Route path="/contact" >xxxxxx</Route>
+    <Route path="/about" component={About} />
+    <Route path="/portfolio" component={Portfolio} />
+    <Route path="/shop" component={Shop} />
+    <Route path="/blog" component={Blog} />
+    <Route path="/contact" component={Contact} />
     
         
         <ProtectedRoute path="/page" component={Page} isAuth={isAuth}  />

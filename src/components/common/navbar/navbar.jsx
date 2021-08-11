@@ -6,7 +6,7 @@ return(
     
         
 <section className="navbar">
-<Router >
+<Router forceRefresh>
     <Link to="/home " className="navbar-item" >Home</Link>
     
     <Link to="/about " className="navbar-item" >About</Link>

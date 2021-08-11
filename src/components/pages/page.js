@@ -7,7 +7,7 @@ import Home from './Spage/home';
      let history= useHistory();
     return (
         
-            <Router >
+            <Router forceRefresh>
                 
         <div>
             <Header/>
